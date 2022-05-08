@@ -24,14 +24,14 @@ jobs:
 
             # Build the Application
             - name: Build Application
-              run: npm run build --prod
+              run: CI=false npm run build --prod
 
             # Deploy to Netlify
             - name: Deploy to Netlify
               uses: nwtgck/actions-netlify@v1.1
               with:
                   publish-dir: './build'
-                  production-branch: master
+                  production-branch: main
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   deploy-message: 'Deploy from GitHub Actions'
                   enable-pull-request-comment: false
