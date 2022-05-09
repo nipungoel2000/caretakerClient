@@ -13,21 +13,21 @@ jobs:
             matrix:
                 node-version: [16.x]
         steps:
-            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-            - name: Checkout
+            # Get code from repository
+            - name: Checkout repository
               uses: actions/checkout@v2.3.3
 
-            # Install the Dependencies
+            # Install all dependencies from a package-lock.json file
             - name: Install Dependencies
               run: npm ci
 
 
-            # Build the Application
+            # Build the Application for production
             - name: Build Application
               run: CI=false npm run build --prod
 
-            # Deploy to Netlify
-            - name: Deploy to Netlify
+            # Deploy to Netlify using our production secrets
+            - name: Deploy to netlify
               uses: nwtgck/actions-netlify@v1.1
               with:
                   publish-dir: './build'
