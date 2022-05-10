@@ -1,3 +1,3 @@
 # caretakerClient
-Front end for CareTaker Client
+Front end for CareTaker Client.
 
